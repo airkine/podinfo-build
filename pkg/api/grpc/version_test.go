@@ -8,8 +8,8 @@ import (
 	"regexp"
 	"testing"
 
-	"github.com/stefanprodan/podinfo/pkg/api/grpc/version"
-	v "github.com/stefanprodan/podinfo/pkg/version"
+	"github.com/airkine/podinfo-build/pkg/api/grpc/version"
+	v "github.com/airkine/podinfo-build/pkg/version"
 	"google.golang.org/grpc"
 	"google.golang.org/grpc/status"
 	"google.golang.org/grpc/test/bufconn"
@@ -19,11 +19,10 @@ func TestGrpcVersion(t *testing.T) {
 
 	// Server initialization
 	// bufconn => uses in-memory connection instead of system network I/O
-	lis := bufconn.Listen(1024*1024)
+	lis := bufconn.Listen(1024 * 1024)
 	t.Cleanup(func() {
 		lis.Close()
 	})
-
 
 	srv := grpc.NewServer()
 	t.Cleanup(func() {
@@ -32,19 +31,19 @@ func TestGrpcVersion(t *testing.T) {
 
 	version.RegisterVersionServiceServer(srv, &VersionServer{})
 
-	go func(){
+	go func() {
 		if err := srv.Serve(lis); err != nil {
 			log.Fatalf("srv.Serve %v", err)
 		}
 	}()
 
 	// - Test
-	dialer := func(context.Context, string) (net.Conn, error){
+	dialer := func(context.Context, string) (net.Conn, error) {
 		return lis.Dial()
 	}
 
 	ctx := context.Background()
-	
+
 	conn, err := grpc.DialContext(ctx, "", grpc.WithContextDialer(dialer), grpc.WithInsecure())
 	t.Cleanup(func() {
 		conn.Close()
@@ -55,7 +54,7 @@ func TestGrpcVersion(t *testing.T) {
 	}
 
 	client := version.NewVersionServiceClient(conn)
-	res , err := client.Version(context.Background(), &version.VersionRequest{})
+	res, err := client.Version(context.Background(), &version.VersionRequest{})
 
 	// Check the status code is what we expect.
 	if _, ok := status.FromError(err); !ok {

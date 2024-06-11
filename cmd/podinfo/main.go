@@ -13,10 +13,10 @@ import (
 	"go.uber.org/zap"
 	"go.uber.org/zap/zapcore"
 
-	"github.com/stefanprodan/podinfo/pkg/api/grpc"
-	"github.com/stefanprodan/podinfo/pkg/api/http"
-	"github.com/stefanprodan/podinfo/pkg/signals"
-	"github.com/stefanprodan/podinfo/pkg/version"
+	"github.com/airkine/podinfo-build/pkg/api/grpc"
+	"github.com/airkine/podinfo-build/pkg/api/http"
+	"github.com/airkine/podinfo-build/pkg/signals"
+	"github.com/airkine/podinfo-build/pkg/version"
 	go_grpc "google.golang.org/grpc"
 )
 
@@ -139,7 +139,7 @@ func main() {
 	if grpcCfg.Port > 0 {
 		grpcSrv, _ := grpc.NewServer(&grpcCfg, logger)
 		//grpcinfoSrv, _ := grpc.NewInfoServer(&grpcCfg)
-		
+
 		grpcServer = grpcSrv.ListenAndServe()
 	}
 

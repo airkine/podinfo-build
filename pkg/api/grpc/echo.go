@@ -3,7 +3,7 @@ package grpc
 import (
 	"context"
 
-	"github.com/stefanprodan/podinfo/pkg/api/grpc/echo"
+	"github.com/airkine/podinfo-build/pkg/api/grpc/echo"
 	"go.uber.org/zap"
 )
 
@@ -13,8 +13,8 @@ type echoServer struct {
 	logger *zap.Logger
 }
 
-func (s *echoServer) Echo (ctx context.Context, message *echo.Message) (*echo.Message, error){
+func (s *echoServer) Echo(ctx context.Context, message *echo.Message) (*echo.Message, error) {
 
 	s.logger.Info("Received message body from client:", zap.String("input body", message.Body))
-	return &echo.Message {Body: message.Body}, nil
+	return &echo.Message{Body: message.Body}, nil
 }

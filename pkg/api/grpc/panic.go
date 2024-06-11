@@ -5,7 +5,7 @@ import (
 	// "log"
 	"os"
 
-	pb "github.com/stefanprodan/podinfo/pkg/api/grpc/panic"
+	pb "github.com/airkine/podinfo-build/pkg/api/grpc/panic"
 	"go.uber.org/zap"
 )
 
@@ -13,7 +13,6 @@ type PanicServer struct {
 	pb.UnimplementedPanicServiceServer
 	config *Config
 	logger *zap.Logger
-
 }
 
 func (s *PanicServer) Panic(ctx context.Context, req *pb.PanicRequest) (*pb.PanicResponse, error) {
@@ -21,4 +20,3 @@ func (s *PanicServer) Panic(ctx context.Context, req *pb.PanicRequest) (*pb.Pani
 	os.Exit(225)
 	return &pb.PanicResponse{}, nil
 }
-

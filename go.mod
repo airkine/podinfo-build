@@ -1,4 +1,4 @@
-module github.com/stefanprodan/podinfo
+module github.com/airkine/podinfo-build
 
 go 1.22
 
