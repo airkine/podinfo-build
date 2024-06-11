@@ -17,16 +17,16 @@ brew install sigstore/tap/cosign
 Verify the podinfo container image hosted on GHCR:
 
 ```sh
-cosign verify ghcr.io/stefanprodan/podinfo:6.5.0 \
---certificate-identity-regexp="^https://github.com/stefanprodan/podinfo.*$" \
+cosign verify ghcr.io/airkine/podinfo-build:6.5.0 \
+--certificate-identity-regexp="^https://github.com/airkine/podinfo-build.*$" \
 --certificate-oidc-issuer=https://token.actions.githubusercontent.com
 ```
 
 Verify the podinfo container image hosted on Docker Hub:
 
 ```sh
-cosign verify docker.io/stefanprodan/podinfo:6.5.0 \
---certificate-identity-regexp="^https://github.com/stefanprodan/podinfo.*$" \
+cosign verify docker.io/airkine/podinfo-build:6.5.0 \
+--certificate-identity-regexp="^https://github.com/airkine/podinfo-build.*$" \
 --certificate-oidc-issuer=https://token.actions.githubusercontent.com
 ```
 
@@ -36,7 +36,7 @@ Verify the podinfo [Helm](https://helm.sh) chart hosted on GHCR:
 
 ```sh
 cosign verify ghcr.io/stefanprodan/charts/podinfo:6.5.0 \
---certificate-identity-regexp="^https://github.com/stefanprodan/podinfo.*$" \
+--certificate-identity-regexp="^https://github.com/airkine/podinfo-build.*$" \
 --certificate-oidc-issuer=https://token.actions.githubusercontent.com
 ```
 
@@ -46,7 +46,7 @@ Verify the podinfo [Flux](https://fluxcd.io) artifact hosted on GHCR:
 
 ```sh
 cosign verify ghcr.io/stefanprodan/manifests/podinfo:6.5.0 \
---certificate-identity-regexp="^https://github.com/stefanprodan/podinfo.*$" \
+--certificate-identity-regexp="^https://github.com/airkine/podinfo-build.*$" \
 --certificate-oidc-issuer=https://token.actions.githubusercontent.com
 ```
 
@@ -56,6 +56,6 @@ Verify the podinfo [Timoni](https://timoni.sh) module hosted on GHCR:
 
 ```sh
 cosign verify ghcr.io/stefanprodan/modules/podinfo:6.5.0 \
---certificate-identity-regexp="^https://github.com/stefanprodan/podinfo.*$" \
+--certificate-identity-regexp="^https://github.com/airkine/podinfo-build.*$" \
 --certificate-oidc-issuer=https://token.actions.githubusercontent.com
 ```

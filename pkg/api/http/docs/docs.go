@@ -11,11 +11,11 @@ const docTemplate = `{
         "title": "{{.Title}}",
         "contact": {
             "name": "Source Code",
-            "url": "https://github.com/stefanprodan/podinfo"
+            "url": "https://github.com/airkine/podinfo-build"
         },
         "license": {
             "name": "MIT License",
-            "url": "https://github.com/stefanprodan/podinfo/blob/master/LICENSE"
+            "url": "https://github.com/airkine/podinfo-build/blob/master/LICENSE"
         },
         "version": "{{.Version}}"
     },

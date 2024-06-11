@@ -6,7 +6,7 @@ import (
 	"runtime"
 	"strconv"
 
-	"github.com/stefanprodan/podinfo/pkg/version"
+	"github.com/airkine/podinfo-build/pkg/version"
 )
 
 // Info godoc

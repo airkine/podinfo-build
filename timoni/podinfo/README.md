@@ -1,12 +1,12 @@
 # Podinfo
 
-[Podinfo](https://github.com/stefanprodan/podinfo) is a tiny web application
+[Podinfo](https://github.com/airkine/podinfo-build) is a tiny web application
 made with Go that showcases best practices of running microservices in Kubernetes.
 
 ## Module Repository
 
 This module is available on GitHub Container Registry at
-[ghcr.io/stefanprodan/modules/podinfo](https://github.com/stefanprodan/podinfo/pkgs/container/modules%2Fpodinfo).
+[ghcr.io/stefanprodan/modules/podinfo](https://github.com/airkine/podinfo-build/pkgs/container/modules%2Fpodinfo).
 
 ## Install
 
@@ -59,7 +59,7 @@ timoni -n default delete podinfo
 |------------------------------|-----------------------------------------|--------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------|
 | `image: tag:`                | `string`                                | `<latest version>`             | Container image tag                                                                                                                          |
 | `image: digest:`             | `string`                                | `""`                           | Container image digest, takes precedence over `tag` when specified                                                                           |
-| `image: repository:`         | `string`                                | `ghcr.io/stefanprodan/podinfo` | Container image repository                                                                                                                   |
+| `image: repository:`         | `string`                                | `ghcr.io/airkine/podinfo-build` | Container image repository                                                                                                                   |
 | `image: pullPolicy:`         | `string`                                | `IfNotPresent`                 | [Kubernetes image pull policy](https://kubernetes.io/docs/concepts/containers/images/#image-pull-policy)                                     |
 | `metadata: labels:`          | `{[ string]: string}`                   | `{}`                           | Common labels for all resources                                                                                                              |
 | `metadata: annotations:`     | `{[ string]: string}`                   | `{}`                           | Common annotations for all resources                                                                                                         |

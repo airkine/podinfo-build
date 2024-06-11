@@ -11,11 +11,11 @@ import (
 	"sync/atomic"
 	"time"
 
+	_ "github.com/airkine/podinfo-build/pkg/api/http/docs"
+	"github.com/airkine/podinfo-build/pkg/fscache"
 	"github.com/gomodule/redigo/redis"
 	"github.com/gorilla/mux"
 	"github.com/prometheus/client_golang/prometheus/promhttp"
-	_ "github.com/stefanprodan/podinfo/pkg/api/http/docs"
-	"github.com/stefanprodan/podinfo/pkg/fscache"
 	httpSwagger "github.com/swaggo/http-swagger"
 	"github.com/swaggo/swag"
 	sdktrace "go.opentelemetry.io/otel/sdk/trace"
@@ -30,10 +30,10 @@ import (
 // @description Go microservice template for Kubernetes.
 
 // @contact.name Source Code
-// @contact.url https://github.com/stefanprodan/podinfo
+// @contact.url https://github.com/airkine/podinfo-build
 
 // @license.name MIT License
-// @license.url https://github.com/stefanprodan/podinfo/blob/master/LICENSE
+// @license.url https://github.com/airkine/podinfo-build/blob/master/LICENSE
 
 // @BasePath /
 // @schemes http https

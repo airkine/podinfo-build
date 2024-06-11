@@ -8,7 +8,7 @@ package main
 // Defaults
 values: {
 	image: {
-		repository: "ghcr.io/stefanprodan/podinfo"
+		repository: "ghcr.io/airkine/podinfo-build"
 		tag:        "6.6.3"
 		digest:     ""
 	}

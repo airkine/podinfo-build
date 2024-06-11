@@ -23,7 +23,7 @@ spec:
     spec:
       containers:
       - name: frontend
-        image: ghcr.io/stefanprodan/podinfo:6.6.3
+        image: ghcr.io/airkine/podinfo-build:6.6.3
         imagePullPolicy: IfNotPresent
         ports:
         - name: http
