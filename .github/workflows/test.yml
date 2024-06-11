@@ -50,7 +50,7 @@ jobs:
         run: |
           kubectl kustomize ./kustomize/ | kubeconform -strict -summary -kubernetes-version ${{ env.KUBERNETES_VERSION }}
       - name: Verify CUE formatting
-        working-directory: ./timoni/podinfo
+        working-directory: ./timoni/podinfo/cue.mod/
         run: |
           cue fmt ./..
           status=$(git status . --porcelain)
