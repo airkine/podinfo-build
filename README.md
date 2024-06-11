@@ -124,7 +124,10 @@ kubectl apply -k github.com/airkine/podinfo-build//kustomize
 ```bash
 docker run -dp 9898:9898 airkine/podinfo-build
 ```
-
+##### Local build with required arguments
+```
+docker build . -t podinfo:latest --build-arg REVISION=2 --build-arg VERSION=1.1.0 --build-arg BUILD_DATE=06152024
+```
 ### Continuous Delivery
 
 In order to install podinfo on a Kubernetes cluster and keep it up to date with the latest

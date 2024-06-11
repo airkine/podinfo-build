@@ -1,6 +1,6 @@
 FROM golang:1.22-alpine as builder
 
-ARG REVISION="1.0.0"
+ARG REVISION
 
 RUN mkdir -p /podinfo/
 
@@ -11,11 +11,11 @@ COPY . .
 RUN go mod download
 
 RUN CGO_ENABLED=0 go build -ldflags "-s -w \
-    -X github.com/airkine/podinfo-build/pkg/version.${REVISION}=1.0.0" \
+    -X github.com/airkine/podinfo-build/pkg/version.REVISION=${REVISION}" \
     -a -o bin/podinfo cmd/podinfo/*
 
 RUN CGO_ENABLED=0 go build -ldflags "-s -w \
-    -X github.com/airkine/podinfo-build/pkg/version.${REVISION}=1.0.0" \
+    -X github.com/airkine/podinfo-build/pkg/version.REVISION=${REVISION}" \
     -a -o bin/podcli cmd/podcli/*
 
 FROM alpine:3.20
