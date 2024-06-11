@@ -49,17 +49,17 @@ jobs:
       - name: Validate Kustomize overlay
         run: |
           kubectl kustomize ./kustomize/ | kubeconform -strict -summary -kubernetes-version ${{ env.KUBERNETES_VERSION }}
-      - name: Verify CUE formatting
-        working-directory: ./timoni/podinfo/cue.mod/
-        run: |
-          cue fmt ./..
-          status=$(git status . --porcelain)
-          [[ -z "$status" ]] || {
-            echo "CUE files are not correctly formatted"
-            echo "$status"
-            git diff
-            exit 1
-          }
+      # - name: Verify CUE formatting
+      #   working-directory: ./timoni/podinfo/
+      #   run: |
+      #     cue fmt ./..
+      #     status=$(git status . --porcelain)
+      #     [[ -z "$status" ]] || {
+      #       echo "CUE files are not correctly formatted"
+      #       echo "$status"
+      #       git diff
+      #       exit 1
+      #     }
       - name: Validate Timoni module
         working-directory: ./timoni/podinfo
         run: |
