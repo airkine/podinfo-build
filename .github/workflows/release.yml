@@ -63,7 +63,8 @@ jobs:
       - name: Prepare
         id: prep
         run: |
-          VERSION=sha-${GITHUB_SHA::8}
+          echo "The GITHUB_REF is $GITHUB_REF"
+          VERSION=${GITHUB_REF/refs\/tags\//}
           if [[ $GITHUB_REF == refs/tags/* ]]; then
             VERSION=${GITHUB_REF/refs\/tags\//}
           fi
