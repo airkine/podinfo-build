@@ -107,14 +107,19 @@ jobs:
         run: |
           helm package charts/podinfo
           helm push podinfo-${{ steps.prep.outputs.VERSION }}.tgz oci://ghcr.io/airkine/charts
-          rm podinfo-${{ steps.prep.outputs.VERSION }}.tgz
-      - name: Publish Flux OCI artifact to GHCR
-        run: |
           flux push artifact oci://ghcr.io/airkine/manifests/podinfo:${{ steps.prep.outputs.VERSION }} \
             --path="./kustomize" \
             --source="${{ github.event.repository.html_url }}" \
             --revision="${GITHUB_REF_NAME}/${GITHUB_SHA}"
           flux tag artifact oci://ghcr.io/airkine/manifests/podinfo:${{ steps.prep.outputs.VERSION }} --tag latest
+          rm podinfo-${{ steps.prep.outputs.VERSION }}.tgz
+      # - name: Publish Flux OCI artifact to GHCR
+      #   run: |
+      #     flux push artifact oci://ghcr.io/airkine/manifests/podinfo:${{ steps.prep.outputs.VERSION }} \
+      #       --path="./kustomize" \
+      #       --source="${{ github.event.repository.html_url }}" \
+      #       --revision="${GITHUB_REF_NAME}/${GITHUB_SHA}"
+      #     flux tag artifact oci://ghcr.io/airkine/manifests/podinfo:${{ steps.prep.outputs.VERSION }} --tag latest
       - name: Sign artifacts with Cosign
         env:
           COSIGN_EXPERIMENTAL: 1
