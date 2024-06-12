@@ -21,7 +21,7 @@ jobs:
       - uses: actions/checkout@v4
       - uses: sigstore/cosign-installer@v3
       - uses: fluxcd/flux2/action@main
-      - uses: airkine/timoni/actions/setup@main
+      - uses: stefanprodan/timoni/actions/setup@main
       - name: Setup Notation CLI
         uses: notaryproject/notation-action/setup@v1
         with:
@@ -133,7 +133,7 @@ jobs:
           file: ./Dockerfile.base
           tags: docker.io/airkine/podinfo-build-base:latest
       - name: Publish helm chart
-        uses: airkine/helm-gh-pages@main
+        uses: stefanprodan/helm-gh-pages@master
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
       - name: Publish config artifact
