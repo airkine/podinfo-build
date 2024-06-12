@@ -106,8 +106,8 @@ jobs:
       - name: Publish Helm chart to GHCR
         run: |
           helm package charts/podinfo
-          helm push podinfo-${{ steps.prep.outputs.VERSION }}.tgz oci://ghcr.io/airkine/charts
-          flux push artifact oci://ghcr.io/airkine/manifests/podinfo:${{ steps.prep.outputs.VERSION }} \
+          helm push podinfo --version ${{ steps.prep.outputs.VERSION }}.tgz oci://ghcr.io/airkine/charts
+          flux push artifact oci://ghcr.io/airkine/manifests/podinfo-${{ steps.prep.outputs.VERSION }}:${{ steps.prep.outputs.VERSION }} \
             --path="./kustomize" \
             --source="${{ github.event.repository.html_url }}" \
             --revision="${GITHUB_REF_NAME}/${GITHUB_SHA}"
