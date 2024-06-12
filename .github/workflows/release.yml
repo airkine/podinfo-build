@@ -21,7 +21,7 @@ jobs:
       - uses: actions/checkout@v4
       - uses: sigstore/cosign-installer@v3
       - uses: fluxcd/flux2/action@main
-      - uses: stefanprodan/timoni/actions/setup@main
+      #- uses: stefanprodan/timoni/actions/setup@main
       - name: Setup Notation CLI
         uses: notaryproject/notation-action/setup@v1
         with:
@@ -94,15 +94,15 @@ jobs:
           platforms: linux/amd64,linux/arm/v7,linux/arm64
           tags: ${{ steps.meta.outputs.tags }}
           labels: ${{ steps.meta.outputs.labels }}
-      - name: Publish Timoni module to GHCR
-        run: |
-          timoni mod push ./timoni/podinfo oci://ghcr.io/airkine/modules/podinfo \
-          --sign cosign \
-          --version ${{ steps.prep.outputs.VERSION }} \
-          -a 'org.opencontainers.image.source=https://github.com/airkine/podinfo-build' \
-          -a 'org.opencontainers.image.licenses=Apache-2.0' \
-          -a 'org.opencontainers.image.description=A timoni.sh module for deploying Podinfo.' \
-          -a 'org.opencontainers.image.documentation=https://github.com/airkine/podinfo-build/blob/main/timoni/podinfo/README.md'
+      # - name: Publish Timoni module to GHCR
+      #   run: |
+      #     timoni mod push ./timoni/podinfo oci://ghcr.io/airkine/modules/podinfo \
+      #     --sign cosign \
+      #     --version ${{ steps.prep.outputs.VERSION }} \
+      #     -a 'org.opencontainers.image.source=https://github.com/airkine/podinfo-build' \
+      #     -a 'org.opencontainers.image.licenses=Apache-2.0' \
+      #     -a 'org.opencontainers.image.description=A timoni.sh module for deploying Podinfo.' \
+      #     -a 'org.opencontainers.image.documentation=https://github.com/airkine/podinfo-build/blob/main/timoni/podinfo/README.md'
       - name: Publish Helm chart to GHCR
         run: |
           helm package charts/podinfo
