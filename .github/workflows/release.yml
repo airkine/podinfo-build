@@ -39,7 +39,7 @@ jobs:
         with:
           go-version: 1.22.x
       - name: Setup Helm
-        uses: azure/setup-helm@v4
+        uses: azure/setup-helm@v3
         with:
           version: v3.15.0
       - name: Setup QEMU
@@ -105,8 +105,8 @@ jobs:
       #     -a 'org.opencontainers.image.documentation=https://github.com/airkine/podinfo-build/blob/main/timoni/podinfo/README.md'
       - name: Publish Helm chart to GHCR
         run: |
-          helm package charts/podinfo
-          helm push podinfo --version ${{ steps.prep.outputs.VERSION }}.tgz oci://ghcr.io/airkine/charts
+          helm package charts/podinfo --version ${{ steps.prep.outputs.VERSION }}
+          helm push podinfo-${{ steps.prep.outputs.VERSION }}.tgz  oci://ghcr.io/airkine/charts
           flux push artifact oci://ghcr.io/airkine/manifests/podinfo-${{ steps.prep.outputs.VERSION }}:${{ steps.prep.outputs.VERSION }} \
             --path="./kustomize" \
             --source="${{ github.event.repository.html_url }}" \
